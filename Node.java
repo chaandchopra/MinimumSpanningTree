@@ -32,7 +32,7 @@ public class Node
 
     public String toString()
     {
-        return vertex1 + "-->" + vertex2 + "(" + weight + ")";
+        return vertex1 + "-"+"(" + weight + ")"+"->" + vertex2 ;
     }
     /*get methods */
     public int getWeight()

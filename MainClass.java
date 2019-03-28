@@ -9,7 +9,20 @@ public class MainClass
 {
     // instance variables - replace the example below with your own
     public static void main(String[] args){
-        Node n = new Node("a", 10);
-        n.printNode();
+        Node n = new Node("a","b", 10);
+        System.out.println(n); /*Node Class Implementation*/
+        
+        Node n1 = new Node("a","b", 1);
+        Node n2 = new Node("a","b", 5);
+        Node [] heap = new Node[3];
+        heap[0] = n;
+        heap[1] = n1;
+        heap[2] = n2;
+        Heap h = new Heap(heap);
+        h.HeapSort();
+        System.out.println("HeapSOrt"+h);/*Heap Class Implementation*/
+        
+        
+        
     }
 }

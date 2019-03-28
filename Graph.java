@@ -16,17 +16,21 @@ public class Graph
     EdgeCollection e;
     int [] graphDim;
     Node [] edges;
+    
     public Graph(String fileLoc)
     {
-        e = new EdgeCollection(fileLoc);
-        graphDim = new int[2];
-        graphDim = Arrays.copyOf(e.GraphDimension(), e.GraphDimension().length);
         Vertex1 = new String[graphDim[0]];
         for(String s : Vertex1)
         {
             s = null;
         }
-        connections = new LinkedList[graphDim[0]];
+        connections = new LinkedList[graphDim[0]];        
+        
+        e = new EdgeCollection(fileLoc);
+        
+        graphDim = new int[2];
+        graphDim = Arrays.copyOf(e.GraphDimension(), e.GraphDimension().length);
+        
         edges = new Node[graphDim[1]];
         edges = Arrays.copyOf(e.EdgeArray(), e.EdgeArray().length);
     }
