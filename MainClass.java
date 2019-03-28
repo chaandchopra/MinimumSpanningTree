@@ -22,7 +22,7 @@ public class MainClass
         h.HeapSort();
         System.out.println("HeapSOrt"+h);//Heap Class Implementation
         **/
-        String s = "graph.txt";
+        String s = "./graph.txt";
         /**EdgeCollection g = new EdgeCollection(s);
         int [] di = g.GraphDimension();
         Node [] edges = g.EdgeArray();

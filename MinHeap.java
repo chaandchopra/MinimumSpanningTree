@@ -6,7 +6,7 @@ import java.lang.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Heap
+public class MinHeap
 {
     // instance variables - replace the example below with your own
     private Node [] myHeap;
@@ -14,7 +14,7 @@ public class Heap
     /**
      * Constructor for objects of class Heap
      */
-    public Heap(Node list[])
+    public MinHeap(Node list[])
     {
         // initialise instance variables
         this.myHeap = new Node[list.length];

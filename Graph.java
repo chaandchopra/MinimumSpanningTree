@@ -6,7 +6,7 @@ import java.util.*;
  * Write a description of class Graph here.
  *
  * @author (your name)
- * @version (a version number or a date)
+ * @version (a vershttps://github.com/chaandchopra/MinimumSpanningTreeion number or a date)
  */
 public class Graph
 {
@@ -102,6 +102,6 @@ public class Graph
     }
     public void PrimsAlgorithm()
     {
-        
+       // 
     }
 }
