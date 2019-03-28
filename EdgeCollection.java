@@ -72,7 +72,12 @@ public class EdgeCollection
             {
                 if(lineCount > 0)
                 {
-                    temp = "";
+                    String[] values = line.split(" ", 3); 
+                        weigh = Integer.parseInt(values[2]);
+                    Node e = new Node(values[0], values[1], weigh);
+                    edges[edgeCount] = e;
+                    edgeCount++;
+                    /**temp = "";
                     spaceCount = 0;
                     char [] chars = line.toCharArray();
                     for(char ch: chars )
@@ -93,17 +98,14 @@ public class EdgeCollection
                             else if(spaceCount == 1)
                                 v2 = temp;
                             if(spaceCount == 2){
-                                weigh = Integer.parseInt(temp);
-                                Node e = new Node(v1, v2, weigh);
-                                edges[edgeCount] = e;
-                                edgeCount++;
+
                                 break;
                             }
                             temp = "";
                             spaceCount++;
                         }
                         
-                    }
+                    }**/
                 }
                 line = read.readLine();
                 lineCount++;
