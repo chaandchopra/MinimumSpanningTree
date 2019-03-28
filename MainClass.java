@@ -22,12 +22,17 @@ public class MainClass
         h.HeapSort();
         System.out.println("HeapSOrt"+h);//Heap Class Implementation
         **/
-        String s = "C:\\Users\\Chaand Chopra\\Desktop\\graph.txt";
-        EdgeCollection g = new EdgeCollection(s);
+        String s = "C:\\Users\\\"Chaand Chopra\"\\PrimsAlgorithm\\graph.txt";
+        /**EdgeCollection g = new EdgeCollection(s);
         int [] di = g.GraphDimension();
         Node [] edges = g.EdgeArray();
         for(Node n: edges)
-           System.out.println(n);
+           System.out.println(n);**/
+        Graph ga = new Graph(s);
+        ga.CreateAdjacencyList();
+        
+        //String b = null;
+        System.out.println(ga);
        
     }
 }

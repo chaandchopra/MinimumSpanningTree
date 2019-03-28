@@ -61,6 +61,7 @@ public class EdgeCollection
         int [] dim = new int[2];
         dim = GraphDimension();
         Node [] edges = new Node[dim[1]];
+        //System.out.println(edges.length);
         try
         {
             read = new BufferedReader(new FileReader(loc));
