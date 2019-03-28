@@ -39,10 +39,13 @@ public class EdgeCollection
                 {
                     if(temp != null)
                     {
+                        
                         dim[0] = Integer.parseInt(temp);
+                        temp = "";
                     }                    
                 }
             }
+            //System.out.println(temp);
             dim[1] = Integer.parseInt(temp);
         }
         catch(IOException e)
@@ -57,7 +60,7 @@ public class EdgeCollection
         BufferedReader read;
         int [] dim = new int[2];
         dim = GraphDimension();
-        Node [] edges = new Node[dim[0]];
+        Node [] edges = new Node[dim[1]];
         try
         {
             read = new BufferedReader(new FileReader(loc));
@@ -73,13 +76,19 @@ public class EdgeCollection
                     char [] chars = line.toCharArray();
                     for(char ch: chars )
                     {
+                        //System.out.println(ch);
                         if(ch != ' ')
                         {
                             temp = temp + ch;
                         }
-                        else{
+                        else
+                        {
+                            //System.out.println("space --" + temp);
                             if(spaceCount == 0)
+                            {
                                 v1 = temp;
+                                
+                            }
                             else if(spaceCount == 1)
                                 v2 = temp;
                             if(spaceCount == 2){
@@ -89,14 +98,14 @@ public class EdgeCollection
                                 edgeCount++;
                                 break;
                             }
+                            temp = "";
+                            spaceCount++;
                         }
-                        spaceCount++;
+                        
                     }
                 }
-                else
-                {
-                    lineCount++;
-                }
+                line = read.readLine();
+                lineCount++;
             }   
         }catch(IOException e){
             e.printStackTrace();

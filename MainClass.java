@@ -9,8 +9,8 @@ public class MainClass
 {
     // instance variables - replace the example below with your own
     public static void main(String[] args){
-        Node n = new Node("a","b", 10);
-        System.out.println(n); /*Node Class Implementation*/
+        /**Node n = new Node("a","b", 10);
+        System.out.println(n); //Node Class Implementation  
         
         Node n1 = new Node("a","b", 1);
         Node n2 = new Node("a","b", 5);
@@ -20,9 +20,14 @@ public class MainClass
         heap[2] = n2;
         Heap h = new Heap(heap);
         h.HeapSort();
-        System.out.println("HeapSOrt"+h);/*Heap Class Implementation*/
-        
-        
-        
+        System.out.println("HeapSOrt"+h);//Heap Class Implementation
+        **/
+        String s = "C:\\Users\\Chaand Chopra\\Desktop\\graph.txt";
+        EdgeCollection g = new EdgeCollection(s);
+        int [] di = g.GraphDimension();
+        Node [] edges = g.EdgeArray();
+        for(Node n: edges)
+           System.out.println(n);
+       
     }
 }
