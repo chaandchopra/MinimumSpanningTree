@@ -5,6 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+import java.io.*;
 public class MainClass
 {
     // instance variables - replace the example below with your own
@@ -22,20 +23,37 @@ public class MainClass
         h.HeapSort();
         System.out.println("HeapSOrt"+h);//Heap Class Implementation
         **/
-        String s = "./graph.txt";
+        // String s = "graph.txt";
         /**EdgeCollection g = new EdgeCollection(s);
         int [] di = g.GraphDimension();
         Node [] edges = g.EdgeArray();
         for(Node n: edges)
            System.out.println(n);**/
-        Graph ga = new Graph(4, 2);
-        //ga.CreateAdjacencyList();
-        Node n1 = new Node("a","b", 1);
-        Node n2 = new Node("c","d", 5); 
-        ga.addNode(n1);
-        ga.addNode(n2);
+        // Graph ga = new Graph(s);
+        // ga.CreateAdjacencyList();
+        
         //String b = null;
-        System.out.println(ga);
-       
+        // System.out.println(ga);
+        String line;
+        try {
+
+        	BufferedReader br = new BufferedReader(new FileReader(args[0]));
+         	String graphDim[] = br.readLine().split(" ");
+         	int m = Integer.parseInt(graphDim[0]);
+         	int n = Integer.parseInt(graphDim[1]);
+         	System.out.printf("%d %d\n",m,n);
+
+        	while ((line = br.readLine()) != null) {
+            	//System.out.println(line);
+            	String []edge = line.split(" ");
+            	node = new Node(edge[0] , edge[1], Integer.parseInt(edge[2]));
+            	System.out.println(node);
+            	node = new Node(edge[1] , edge[0], Integer.parseInt(edge[2]));
+            	System.out.println(node);
+         	}       
+      	} 
+      	catch(Exception e) {
+         	e.printStackTrace();
+      	}
     }
 }
