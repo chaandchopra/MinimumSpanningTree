@@ -1,3 +1,4 @@
+package com.assignment;
 import java.util.*;
 /**
  * Write a description of class Graph here.
@@ -12,6 +13,7 @@ public class Graph
     public LinkedList<Node>[] connections;
     public int vertexCount;
     public int edgeCount;
+    public int totalWeight;
     //EdgeCollection e;
     int [] graphDim;
     //Node [] connections;
@@ -19,6 +21,7 @@ public class Graph
     {
         vertices = new String[vertex];
         vertexCount = 0; 
+        edgeCount = 0; 
         connections = new LinkedList[vertex];
         for(int i = 0; i < vertex; i++)
             connections[i] = new LinkedList<Node>();
@@ -49,6 +52,7 @@ public class Graph
         {
             connections[loc].add(n.reverseNode());
         }
+        this.totalWeight += n.getWeight();
         edgeCount++;
     }
     public LinkedList<Node> getEdgesOf(String vertex)
@@ -94,6 +98,7 @@ public class Graph
 	public Graph prims(){
 		//init empty tree
 		Graph mst = new Graph(this.vertexCount, this.vertexCount - 1);
+
 		String[] mstNodes = new String[this.vertexCount];
 		//initialising heap
 		MinHeap minHeap = new MinHeap(2 * this.edgeCount);
@@ -139,53 +144,4 @@ public class Graph
 		}
 		return false;
 	}
-}
-class Node
-{
-    // instance variables - replace the example below with your own
-    private int weight;
-    private String vertex1;
-    private String vertex2;
-    /**
-     * Constructor for objects of class Node
-     */
-    public Node()
-    {
-        // initialise instance variables
-        this.weight = 0;
-        this.vertex1 = "";
-        this.vertex2 = "";
-    }
-    
-    public Node(String v1, String v2, int w)
-    {
-        // initialise instance variables
-        this.weight = w;
-        this.vertex1 = v1;
-        this.vertex2 = v2;
-    }
-    
-    public Node reverseNode()
-    {
-        Node n = new Node(this.vertex2, this.vertex1, this.weight);
-        return n;
-    }
-    
-    public String toString()
-    {
-        return vertex1 + "-"+"(" + weight + ")"+"->" + vertex2 ;
-    }
-    /*get methods */
-    public int getWeight()
-    {
-        return weight;
-    }
-    public String getVertex1()
-    {
-        return vertex1;
-    }
-    public String getVertex2()
-    {
-        return vertex2;
-    }
 }
