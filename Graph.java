@@ -1,3 +1,5 @@
+//modify : addNode for undirected rep
+//add func : list getEdgesOf(vertex)
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
