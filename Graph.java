@@ -11,7 +11,7 @@ import java.util.*;
 public class Graph
 {
     // instance variables - replace the example below with your own
-    String [] Vertex1;
+    String [] Vertex1;//vertex
     LinkedList<Node>[] connections;
     int vertexCount;
     //EdgeCollection e;
@@ -45,10 +45,25 @@ public class Graph
         if(loc == -1)
         {
             Vertex1[vertexCount] = n.getVertex2();
+            connections[vertexCount].add(n.reverseNode());
             vertexCount++;
         }
+        else
+        {
+            connections[loc].add(n.reverseNode());
+        }
     }
-   
+    public LinkedList<Node> returnConnections(String vertex1)
+    {
+        for(int i = 0; i < Vertex1.length; ++i)
+        {
+            if(Vertex1[i].equals(vertex1))
+            {
+                return connections[i];
+            }
+        }
+        return null;
+    }
     private int searchLoc(String vertex)
     {
         //int exist = 0, loc = -1; 

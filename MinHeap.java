@@ -80,7 +80,7 @@ public class MinHeap
         
     }
     
-    public Node ExtractMin()
+    public Node extractMin()
     {
         Node r = null;
         if(this.size == 1)
@@ -98,7 +98,7 @@ public class MinHeap
         return r;
     }
     
-    public void AddElement(Node n)
+    public void addElement(Node n)
     {
         //System.out.println
         if(this.size == this.capacity)
