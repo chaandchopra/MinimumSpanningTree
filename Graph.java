@@ -8,6 +8,7 @@ import java.util.*;
 public class Graph
 {
     // instance variables - replace the example below with your own
+   
     public String [] vertices;//vertex
     public LinkedList<Node>[] connections;
     public int vertexCount;
@@ -86,7 +87,8 @@ public class Graph
     {
         String s = "";
         for(int i = 0 ; i < graphDim[0]; ++i)
-            s = s + vertices[i] + "----->" + PrintLinkedList(connections[i]) + "\n";
+            s = s + "|" + vertices[i] + "|" + "->  " + PrintLinkedList(connections[i]) + "\n";
+        s = s + "--------------------------------------------\n";
         return s; 
     }
 	public Graph prims(){
@@ -108,9 +110,10 @@ public class Graph
 		}
 		Node tempNode;
 		//System.out.println("minHeap "+minHeap);
-		System.out.println("mstEdgeCount " + mstEdgeCount);
-		System.out.println("vertexCount " + vertexCount);
-		while(mstEdgeCount < this.vertexCount - 1){//total |v| - 1 edges in tree
+		//System.out.println("mstEdgeCount " + mstEdgeCount);
+		//System.out.println("vertexCount " + vertexCount);
+		while(mstEdgeCount < this.vertexCount - 1){
+			//total |v| - 1 edges in tree
 			//add the min edge 
 			tempNode = minHeap.extractMin();
 			//System.out.print(tempNode);
