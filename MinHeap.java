@@ -29,12 +29,20 @@ public class MinHeap
         this.myHeap = list;
         this.size = list.length;
     }
-    
+    private int lchild(int i){
+      return 2*i;
+    }
+    private int rchild(int i){
+      return 2*i+1;
+    }
+    private int parent(int i){
+      return i/2;
+    }
     public void Heapify(int i)
     {
-       int l = 2*i;
+       int l = lchild(i);
        //int size = this.myHeap.length;
-       int r = 2*i+1;
+       int r = rchild(i);
        int smallest = i;
        //System.out.println("smallest "+ smallest + " l " + l + " r "+ r );
        if(l < size && this.myHeap[l].getWeight() <= this.myHeap[i].getWeight())
@@ -51,22 +59,6 @@ public class MinHeap
            this.myHeap[smallest] = temp;
            Heapify(smallest);           
        }
-       /*
-       if(l < end && r < end){
-           if(this.myHeap[l].getWeight() <= this.myHeap[r].getWeight())
-            smallest = l;
-           else
-            smallest = r;
-           if(this.myHeap[i].getWeight() <= this.myHeap[smallest].getWeight())
-            return;
-           if(smallest < end)
-           {
-               Node temp = this.myHeap[i];
-               this.myHeap[i] = this.myHeap[smallest];
-               this.myHeap[smallest] = temp;
-               Heapify(smallest, end);
-           } 
-        }  */ 
     }
     
     public void BuildHeap()
@@ -107,10 +99,15 @@ public class MinHeap
             return;
         }
         myHeap[this.size] = n; 
-        this.size++;
-        int j = this.size - 1;
-        //while(j != 0 && myHeap[(j-1)/2] > myHeap[i])
-        Heapify(0);
+        int current = size; 
+  
+        while (myHeap[current].getWeight() < myHeap[parent(current)].getWeight()) { 
+            //swap(current, parent(current)); 
+            Node temp = myHeap[current];
+            myHeap[current] = myHeap[parent(current)];
+            myHeap[parent(current)] = temp;
+            current = parent(current); 
+        } 
     }
     
     public void HeapSort()
