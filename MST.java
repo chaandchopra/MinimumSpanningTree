@@ -21,16 +21,26 @@ public class MST{
 		while(it.hasNext()){
 			minHeap.addElement(it.next());
 		}
-		while(mstEdgeCount < g.vertexCount - 1)//total |v| - 1 edges in tree
+		Node tempNode;
+		while(mstEdgeCount < g.vertexCount - 1){//total |v| - 1 edges in tree
 			//add the min edge 
-			Node tempNode = minHeap.extractMin();
+			tempNode = minHeap.extractMin();
 			//cycle detection
 			String v2 = tempNode.getVertex2();
 			if(!foundIn(mstNodes, v2)){
 				mst.addElement(tempNode);
+				mstEdgeCount++;
+				mstNodes[mstVertexCount++] = v2;
 			}
 		}
-		return tree;
+		return mst;
+	}
+	private boolean foundIn(Node[] mstNodes, String key){
+		for(int i = 0; i < mstNodes.length; i++){
+			if(key.equals(mstNodes[i]))
+				return false;
+		}
+		return true;
 	}
 	public String toString(){
 		return tree.toString();

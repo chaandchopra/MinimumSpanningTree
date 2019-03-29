@@ -16,6 +16,7 @@ public class Graph
     String [] Vertex1;//vertex
     LinkedList<Node>[] connections;
     int vertexCount;
+    int edgeCount;
     //EdgeCollection e;
     int [] graphDim;
     //Node [] edges;
