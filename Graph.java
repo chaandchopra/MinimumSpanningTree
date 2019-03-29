@@ -24,7 +24,7 @@ public class Graph
         vertexCount = 0; 
         connections = new LinkedList[vertex];
         for(int i = 0; i < vertex; i++)
-            connections[i] = new LinkedList();
+            connections[i] = new LinkedList<Node>();
         graphDim = new int[]{vertex, edges};
     }
     public void addNode(Node n)
@@ -149,7 +149,9 @@ public class Graph
     public String PrintLinkedList(LinkedList <Node> conn)
     {
         String s = "";
-        for(Iterator i = conn.iterator(); i.hasNext();)
+        ListIterator<Node> i = conn.listIterator();
+        while(i.hasNext())
+        //for(Iterator i = conn.iterator(); i.hasNext();)
             s = s + i.next() + "  ";
         return s; 
     } 
