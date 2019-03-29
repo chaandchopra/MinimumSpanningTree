@@ -2,13 +2,12 @@ import java.util.*;
 /**
  * Write a description of class Graph here.
  *
- * @author (your name)
+ * @author (17MCMC34,40)
  * @version (a vershttps://github.com/chaandchopra/MinimumSpanningTreeion number or a date)
  */
 public class Graph
 {
     // instance variables - replace the example below with your own
-   
     public String [] vertices;//vertex
     public LinkedList<Node>[] connections;
     public int vertexCount;
@@ -25,6 +24,7 @@ public class Graph
             connections[i] = new LinkedList<Node>();
         graphDim = new int[]{vertex, edges};
     }
+    //to add a single edge
     public void addNode(Node n)
     {
         int loc = searchLoc(n.getVertex1());
@@ -116,7 +116,6 @@ public class Graph
 			//total |v| - 1 edges in tree
 			//add the min edge 
 			tempNode = minHeap.extractMin();
-			//System.out.print(tempNode);
 			//cycle detection
 			String v2 = tempNode.getVertex2();
 			if(!foundIn(mstNodes, v2)){
@@ -140,4 +139,53 @@ public class Graph
 		}
 		return false;
 	}
+}
+class Node
+{
+    // instance variables - replace the example below with your own
+    private int weight;
+    private String vertex1;
+    private String vertex2;
+    /**
+     * Constructor for objects of class Node
+     */
+    public Node()
+    {
+        // initialise instance variables
+        this.weight = 0;
+        this.vertex1 = "";
+        this.vertex2 = "";
+    }
+    
+    public Node(String v1, String v2, int w)
+    {
+        // initialise instance variables
+        this.weight = w;
+        this.vertex1 = v1;
+        this.vertex2 = v2;
+    }
+    
+    public Node reverseNode()
+    {
+        Node n = new Node(this.vertex2, this.vertex1, this.weight);
+        return n;
+    }
+    
+    public String toString()
+    {
+        return vertex1 + "-"+"(" + weight + ")"+"->" + vertex2 ;
+    }
+    /*get methods */
+    public int getWeight()
+    {
+        return weight;
+    }
+    public String getVertex1()
+    {
+        return vertex1;
+    }
+    public String getVertex2()
+    {
+        return vertex2;
+    }
 }
