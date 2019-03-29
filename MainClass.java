@@ -28,9 +28,12 @@ public class MainClass
         Node [] edges = g.EdgeArray();
         for(Node n: edges)
            System.out.println(n);**/
-        Graph ga = new Graph(s);
-        ga.CreateAdjacencyList();
-        
+        Graph ga = new Graph(4, 2);
+        //ga.CreateAdjacencyList();
+        Node n1 = new Node("a","b", 1);
+        Node n2 = new Node("c","d", 5); 
+        ga.addNode(n1);
+        ga.addNode(n2);
         //String b = null;
         System.out.println(ga);
        

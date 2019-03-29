@@ -13,11 +13,63 @@ public class Graph
     // instance variables - replace the example below with your own
     String [] Vertex1;
     LinkedList<Node>[] connections;
-    EdgeCollection e;
+    //EdgeCollection e;
     int [] graphDim;
-    Node [] edges;
+    //Node [] edges;
+    public Graph(int vertex, int edges)
+    {
+        Vertex1 = new String[vertex];
+        connections = new LinkedList[vertex];
+        for(int i = 0; i < vertex; i++)
+            connections[i] = new LinkedList();
+        graphDim = new int[]{vertex, edges};
+    }
+    public void addNode(Node n)
+    {
+        int loc = searchLoc(n.getVertex1()), insertLoc = -1;
+        if(loc == -1)
+        {
+            insertLoc = insertVertex(n.getVertex1());
+            connections[insertLoc].add(n);
+            //System.out.println("Node inserted"); 
+        }
+        else 
+        {
+            connections[loc].add(n);
+        }
+        loc = searchLoc(n.getVertex2());
+        if(loc == -1)
+            insertLoc = insertVertex(n.getVertex2());
+    }
+    private int insertVertex(String v1)
+    {
+        int insertLoc = -1;    
+        for(int i = 0; i < Vertex1.length; i++)
+            {
+                if(Vertex1[i] == null)
+                {
+                    Vertex1[i] = v1;
+                    insertLoc = i;
+                    break;
+                }
+            }  
+        return insertLoc;
+               
+    }
     
-    public Graph(String fileLoc)
+    private int searchLoc(String vertex)
+    {
+        //int exist = 0, loc = -1; 
+        for(int i = 0; i < Vertex1.length; i++)
+        {
+            if(Vertex1[i] != null && Vertex1[i].equals(vertex))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    /*public Graph(String fileLoc)
     {
         e = new EdgeCollection(fileLoc);
         graphDim = e.GraphDimension();       
@@ -85,7 +137,7 @@ public class Graph
     {
         ImplementVertex1();
         ImplementConnections();
-    }
+    }*/
     public String PrintLinkedList(LinkedList <Node> conn)
     {
         String s = "";
