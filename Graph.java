@@ -11,7 +11,7 @@ import java.util.*;
 public class Graph
 {
     // instance variables - replace the example below with your own
-    String [] Vertex1;
+    String [] Vertex1;//vertex
     LinkedList<Node>[] connections;
     int vertexCount;
     //EdgeCollection e;
