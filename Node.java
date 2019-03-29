@@ -29,7 +29,13 @@ public class Node
         this.vertex1 = v1;
         this.vertex2 = v2;
     }
-
+    
+    public Node reverseNode()
+    {
+        Node n = new Node(this.vertex2, this.vertex1, this.weight);
+        return n;
+    }
+    
     public String toString()
     {
         return vertex1 + "-"+"(" + weight + ")"+"->" + vertex2 ;

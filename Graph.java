@@ -1,5 +1,3 @@
-//modify : addNode for undirected rep
-//add func : list getEdgesOf(vertex)
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -48,10 +46,25 @@ public class Graph
         if(loc == -1)
         {
             Vertex1[vertexCount] = n.getVertex2();
+            connections[vertexCount].add(n.reverseNode());
             vertexCount++;
         }
+        else
+        {
+            connections[loc].add(n.reverseNode());
+        }
     }
-   
+    public LinkedList<Node> returnConnections(String vertex1)
+    {
+        for(int i = 0; i < Vertex1.length; ++i)
+        {
+            if(Vertex1[i].equals(vertex1))
+            {
+                return connections[i];
+            }
+        }
+        return null;
+    }
     private int searchLoc(String vertex)
     {
         //int exist = 0, loc = -1; 

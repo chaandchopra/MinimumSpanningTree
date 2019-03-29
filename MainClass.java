@@ -6,12 +6,15 @@
  * @version (a version number or a date)
  */
 import java.io.*;
+import java.util.*;
 public class MainClass
 {
     // instance variables - replace the example below with your own
     public static void main(String[] args){
-        /**Node n = new Node("a","b", 10);
-        System.out.println(n); //Node Class Implementation  
+        /**
+        Node n = new Node("a","b", 10);
+        Node rn = n.reverseNode();
+        System.out.println(rn); //Node Class Implementation  
         **/
         /**Node n = new Node("a","b", 10);
         Node n1 = new Node("a","b", 1);
@@ -34,6 +37,8 @@ public class MainClass
         Node [] edges = g.EdgeArray();
         for(Node n: edges)
            System.out.println(n);**/
+        
+        //**
         String s = "graph.txt";   
         Node n = new Node("a","b", 10);
         Node n1 = new Node("c","d", 1);
@@ -44,7 +49,11 @@ public class MainClass
         ga.addNode(n1);
         ga.addNode(n2);
         //String b = null;
-        System.out.println(ga);
+        //System.out.println(ga);//Graph Class Verification
+        LinkedList <Node> l = ga.returnConnections("a");
+        System.out.println(ga.PrintLinkedList(l));
+        //**/
+        
         /**String line;
         try {
 
