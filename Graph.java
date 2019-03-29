@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 /**
  * Write a description of class Graph here.
@@ -11,16 +8,16 @@ import java.util.*;
 public class Graph
 {
     // instance variables - replace the example below with your own
-    String [] Vertex1;//vertex
-    LinkedList<Node>[] connections;
-    int vertexCount;
-    int edgeCount;
+    public String [] vertices;//vertex
+    public LinkedList<Node>[] connections;
+    public int vertexCount;
+    public int edgeCount;
     //EdgeCollection e;
     int [] graphDim;
-    //Node [] edges;
+    //Node [] connections;
     public Graph(int vertex, int edges)
     {
-        Vertex1 = new String[vertex];
+        vertices = new String[vertex];
         vertexCount = 0; 
         connections = new LinkedList[vertex];
         for(int i = 0; i < vertex; i++)
@@ -29,14 +26,12 @@ public class Graph
     }
     public void addNode(Node n)
     {
-        int loc = searchLoc(n.getVertex1()), insertLoc = -1;
+        int loc = searchLoc(n.getVertex1());
         if(loc == -1)
         {
-            //insertLoc = insertVertex(n.getVertex1());
-            Vertex1[vertexCount] = n.getVertex1();
+            vertices[vertexCount] = n.getVertex2();
             connections[vertexCount].add(n);
             vertexCount++;
-            //System.out.println("Node inserted"); 
         }
         else 
         {
@@ -45,7 +40,7 @@ public class Graph
         loc = searchLoc(n.getVertex2());
         if(loc == -1)
         {
-            Vertex1[vertexCount] = n.getVertex2();
+            vertices[vertexCount] = n.getVertex2();
             connections[vertexCount].add(n.reverseNode());
             vertexCount++;
         }
@@ -54,11 +49,11 @@ public class Graph
             connections[loc].add(n.reverseNode());
         }
     }
-    public LinkedList<Node> returnConnections(String vertex1)
+    public LinkedList<Node> getEdgesOf(String vertex)
     {
-        for(int i = 0; i < Vertex1.length; ++i)
+        for(int i = 0; i < vertices.length; ++i)
         {
-            if(Vertex1[i].equals(vertex1))
+            if(vertices[i].equals(vertex))
             {
                 return connections[i];
             }
@@ -68,16 +63,16 @@ public class Graph
     private int searchLoc(String vertex)
     {
         //int exist = 0, loc = -1; 
-        for(int i = 0; i < Vertex1.length; i++)
+        for(int i = 0; i < vertices.length; i++)
         {
-            if(Vertex1[i] != null && Vertex1[i].equals(vertex))
+            if(vertices[i] != null && vertices[i].equals(vertex))
             {
                 return i;
             }
         }
         return -1;
     }
-    public String PrintLinkedList(LinkedList <Node> conn)
+    private String PrintLinkedList(LinkedList <Node> conn)
     {
         String s = "";
         ListIterator<Node> i = conn.listIterator();
@@ -90,7 +85,7 @@ public class Graph
     {
         String s = "";
         for(int i = 0 ; i < graphDim[0]; ++i)
-            s = s + Vertex1[i] + "----->" + PrintLinkedList(connections[i]) + "\n";
+            s = s + vertices[i] + "----->" + PrintLinkedList(connections[i]) + "\n";
         return s; 
     }
     public void PrimsAlgorithm()

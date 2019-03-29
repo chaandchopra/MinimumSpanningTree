@@ -12,11 +12,12 @@ public class MST{
 		//initialising heap
 		MinHeap minHeap = new MinHeap(g.vertexCount - 1);
 		//adding 1st vertex of the list
-		mstNodes[0] = g.vertex1[0];
+		mstNodes[0] = g.vertices[0];
 		int mstEdgeCount = 0;
 		int mstVertexCount = 1;
 		//add all edges of this vertex in min heap
-		LinkedList<Node> l = g.getEdgesof(g.vertex1[0]);
+		String v = g.vertices[0];
+		LinkedList<Node> l = g.getEdgesof(v);
 		ListIterator<Node> it = l.listIterator(0);
 		while(it.hasNext()){
 			minHeap.addElement(it.next());
@@ -28,14 +29,14 @@ public class MST{
 			//cycle detection
 			String v2 = tempNode.getVertex2();
 			if(!foundIn(mstNodes, v2)){
-				mst.addElement(tempNode);
+				mst.addNode(tempNode);
 				mstEdgeCount++;
 				mstNodes[mstVertexCount++] = v2;
 			}
 		}
 		return mst;
 	}
-	private boolean foundIn(Node[] mstNodes, String key){
+	private boolean foundIn(String[] mstNodes, String key){
 		for(int i = 0; i < mstNodes.length; i++){
 			if(key.equals(mstNodes[i]))
 				return false;

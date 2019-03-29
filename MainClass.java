@@ -50,8 +50,9 @@ public class MainClass
         ga.addNode(n2);
         //String b = null;
         //System.out.println(ga);//Graph Class Verification
-        LinkedList <Node> l = ga.returnConnections("a");
-        System.out.println(ga.PrintLinkedList(l));
+        LinkedList <Node> l = ga.getEdgesOf("a");
+        System.out.print(ga.connections[0]);
+        //System.out.println(ga.PrintLinkedList(l));
         //**/
         
         /**String line;
