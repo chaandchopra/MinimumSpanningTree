@@ -10,29 +10,38 @@ public class MinHeap
 {
     // instance variables - replace the example below with your own
     private Node [] myHeap;
+    private int capacity;
+    private int size;
 
     /**
      * Constructor for objects of class Heap
      */
+    public MinHeap(int capacity)
+    {
+        this.myHeap = new Node[capacity];
+        this.size = 0;
+        this.capacity = capacity;
+    }
     public MinHeap(Node list[])
     {
         // initialise instance variables
         this.myHeap = new Node[list.length];
         this.myHeap = list;
+        this.size = list.length;
     }
     
-    public void Heapify(int i, int end)
+    public void Heapify(int i)
     {
        int l = 2*i;
-       int size = this.myHeap.length;
+       //int size = this.myHeap.length;
        int r = 2*i+1;
        int smallest = i;
        //System.out.println("smallest "+ smallest + " l " + l + " r "+ r );
-       if(l < end && this.myHeap[l].getWeight() <= this.myHeap[i].getWeight())
+       if(l < size && this.myHeap[l].getWeight() <= this.myHeap[i].getWeight())
         smallest = l;
        else
         smallest = i;
-       if(r < end && this.myHeap[r].getWeight() <= this.myHeap[smallest].getWeight())
+       if(r < size && this.myHeap[r].getWeight() <= this.myHeap[smallest].getWeight())
         smallest = r;
        //System.out.println("after comparing -smallest "+ smallest + " l " + l + " r "+ r );
        if(smallest != i)
@@ -40,7 +49,7 @@ public class MinHeap
            Node temp = this.myHeap[i];
            this.myHeap[i] = this.myHeap[smallest];
            this.myHeap[smallest] = temp;
-           Heapify(smallest, end);           
+           Heapify(smallest);           
        }
        /*
        if(l < end && r < end){
@@ -66,9 +75,42 @@ public class MinHeap
         int value = (int)Math.floor(n/2)-1;
         for(int i = value; i >= 0; --i)
         {
-            Heapify(i,n);
+            Heapify(i);
         }
         
+    }
+    
+    public Node ExtractMin()
+    {
+        Node r = null;
+        if(this.size == 1)
+        {
+            this.size--;
+            r = myHeap[0];
+        }
+        if(this.size > 1)
+        {
+            r = myHeap[0];
+            myHeap[0] = myHeap[this.size - 1];
+            myHeap[this.size - 1] = r;
+            Heapify(0);            
+        }
+        return r;
+    }
+    
+    public void AddElement(Node n)
+    {
+        //System.out.println
+        if(this.size == this.capacity)
+        {
+            System.out.println("Overflow");
+            return;
+        }
+        myHeap[this.size] = n; 
+        this.size++;
+        int j = this.size - 1;
+        //while(j != 0 && myHeap[(j-1)/2] > myHeap[i])
+        Heapify(0);
     }
     
     public void HeapSort()
@@ -77,7 +119,7 @@ public class MinHeap
         int n = this.myHeap.length, k =n;
         while(k >= 0)
         {
-            Heapify(k, n);
+            Heapify(k);
             k--;
         }
     }

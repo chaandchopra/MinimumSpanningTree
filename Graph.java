@@ -13,12 +13,14 @@ public class Graph
     // instance variables - replace the example below with your own
     String [] Vertex1;
     LinkedList<Node>[] connections;
+    int vertexCount;
     //EdgeCollection e;
     int [] graphDim;
     //Node [] edges;
     public Graph(int vertex, int edges)
     {
         Vertex1 = new String[vertex];
+        vertexCount = 0; 
         connections = new LinkedList[vertex];
         for(int i = 0; i < vertex; i++)
             connections[i] = new LinkedList();
@@ -29,8 +31,10 @@ public class Graph
         int loc = searchLoc(n.getVertex1()), insertLoc = -1;
         if(loc == -1)
         {
-            insertLoc = insertVertex(n.getVertex1());
-            connections[insertLoc].add(n);
+            //insertLoc = insertVertex(n.getVertex1());
+            Vertex1[vertexCount] = n.getVertex1();
+            connections[vertexCount].add(n);
+            vertexCount++;
             //System.out.println("Node inserted"); 
         }
         else 
@@ -39,24 +43,12 @@ public class Graph
         }
         loc = searchLoc(n.getVertex2());
         if(loc == -1)
-            insertLoc = insertVertex(n.getVertex2());
+        {
+            Vertex1[vertexCount] = n.getVertex2();
+            vertexCount++;
+        }
     }
-    private int insertVertex(String v1)
-    {
-        int insertLoc = -1;    
-        for(int i = 0; i < Vertex1.length; i++)
-            {
-                if(Vertex1[i] == null)
-                {
-                    Vertex1[i] = v1;
-                    insertLoc = i;
-                    break;
-                }
-            }  
-        return insertLoc;
-               
-    }
-    
+   
     private int searchLoc(String vertex)
     {
         //int exist = 0, loc = -1; 
