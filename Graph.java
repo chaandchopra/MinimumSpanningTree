@@ -94,33 +94,33 @@ public class Graph
 		Graph mst = new Graph(this.vertexCount, this.vertexCount - 1);
 		String[] mstNodes = new String[this.vertexCount];
 		//initialising heap
-		MinHeap minHeap = new MinHeap(this.vertexCount - 1);
+		MinHeap minHeap = new MinHeap(2 * this.edgeCount);
 		//adding 1st vertex of the list
 		mstNodes[0] = this.vertices[0];
 		int mstEdgeCount = 0;
 		int mstVertexCount = 1;
 		//add all edges of this vertex in min heap
-		String v = this.vertices[0];
-		LinkedList<Node> l = this.getEdgesOf(v);
+		LinkedList<Node> l = this.getEdgesOf(this.vertices[0]);
 		//System.out.print(l);
 		ListIterator<Node> it = l.listIterator(0);
 		while(it.hasNext()){
 			minHeap.addElement(it.next());
 		}
 		Node tempNode;
-		System.out.print("ok");
-		// while(mstEdgeCount < this.vertexCount - 1){//total |v| - 1 edges in tree
-		// 	//add the min edge 
-		// 	tempNode = minHeap.extractMin();
-		// 	//System.out.print(tempNode);
-		// 	//cycle detection
-		// 	String v2 = tempNode.getVertex2();
-		// 	if(!foundIn(mstNodes, v2)){
-		// 		mst.addNode(tempNode);
-		// 		mstEdgeCount++;
-		// 		mstNodes[mstVertexCount++] = v2;
-		// 	}
-		// }
+		System.out.println(minHeap);
+		System.out.println(mstEdgeCount);
+		while(mstEdgeCount <= this.vertexCount - 1){//total |v| - 1 edges in tree
+			//add the min edge 
+			tempNode = minHeap.extractMin();
+			//System.out.print(tempNode);
+			//cycle detection
+			String v2 = tempNode.getVertex2();
+			if(!foundIn(mstNodes, v2)){
+				mst.addNode(tempNode);
+				mstEdgeCount++;
+				mstNodes[mstVertexCount++] = v2;
+			}
+		}
 		return mst;
 	}
 	private boolean foundIn(String[] mstNodes, String key){

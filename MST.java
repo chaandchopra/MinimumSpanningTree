@@ -17,13 +17,13 @@ public class MST{
 		int mstVertexCount = 1;
 		//add all edges of this vertex in min heap
 		String v = g.vertices[0];
-		LinkedList<Node> l = g.getEdgesof(v);
+		LinkedList<Node> l = g.getEdgesOf(v);
 		ListIterator<Node> it = l.listIterator(0);
 		while(it.hasNext()){
 			minHeap.addElement(it.next());
 		}
 		Node tempNode;
-		while(mstEdgeCount < g.vertexCount - 1){//total |v| - 1 edges in tree
+		while(mstEdgeCount <= g.vertexCount - 1){//total |v| - 1 edges in tree
 			//add the min edge 
 			tempNode = minHeap.extractMin();
 			//cycle detection

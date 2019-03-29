@@ -27,6 +27,7 @@ public class MinHeap
         // initialise instance variables
         this.myHeap = new Node[list.length];
         this.myHeap = list;
+        this.capacity = list.length;
         this.size = list.length;
     }
     private int lchild(int i){
@@ -38,6 +39,7 @@ public class MinHeap
     private int parent(int i){
       return i/2;
     }
+
     public void Heapify(int i)
     {
        int l = lchild(i);
@@ -74,19 +76,15 @@ public class MinHeap
     
     public Node extractMin()
     {
-        Node r = null;
-        if(this.size == 1)
-        {
-            this.size--;
-            r = myHeap[0];
+        if(this.size == 0){
+            System.out.println("Heap Underflow");
+            return null;
         }
-        if(this.size > 1)
-        {
-            r = myHeap[0];
-            myHeap[0] = myHeap[this.size - 1];
-            myHeap[this.size - 1] = r;
-            Heapify(0);            
-        }
+        Node r = myHeap[0];
+        myHeap[0] = myHeap[this.size - 1];
+        myHeap[this.size - 1] = r;
+        this.size--;
+        Heapify(0);            
         return r;
     }
     
@@ -100,7 +98,7 @@ public class MinHeap
         }
         myHeap[this.size] = n; 
         int current = size; 
-  
+        this.size++;
         while (myHeap[current].getWeight() < myHeap[parent(current)].getWeight()) { 
             //swap(current, parent(current)); 
             Node temp = myHeap[current];
