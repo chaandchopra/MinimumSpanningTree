@@ -75,7 +75,8 @@ public class MinHeap
     }
     
     public Node extractMin()
-    {
+    {   
+        //System.out.println("emin size " + size);
         if(this.size == 0){
             System.out.println("Heap Underflow");
             return null;
@@ -97,8 +98,9 @@ public class MinHeap
             return;
         }
         myHeap[this.size] = n; 
-        int current = size; 
+        int current = this.size; 
         this.size++;
+        //System.out.println("MinHeap size "+this.size);
         while (myHeap[current].getWeight() < myHeap[parent(current)].getWeight()) { 
             //swap(current, parent(current)); 
             Node temp = myHeap[current];
@@ -111,7 +113,7 @@ public class MinHeap
     public void HeapSort()
     {
         BuildHeap();
-        int n = this.myHeap.length, k =n;
+        int n = this.myHeap.length, k = n;
         while(k >= 0)
         {
             Heapify(k);

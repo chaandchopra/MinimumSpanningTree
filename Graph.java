@@ -107,9 +107,10 @@ public class Graph
 			minHeap.addElement(it.next());
 		}
 		Node tempNode;
-		System.out.println(minHeap);
-		System.out.println(mstEdgeCount);
-		while(mstEdgeCount <= this.vertexCount - 1){//total |v| - 1 edges in tree
+		//System.out.println("minHeap "+minHeap);
+		System.out.println("mstEdgeCount " + mstEdgeCount);
+		System.out.println("vertexCount " + vertexCount);
+		while(mstEdgeCount < this.vertexCount - 1){//total |v| - 1 edges in tree
 			//add the min edge 
 			tempNode = minHeap.extractMin();
 			//System.out.print(tempNode);
@@ -119,6 +120,12 @@ public class Graph
 				mst.addNode(tempNode);
 				mstEdgeCount++;
 				mstNodes[mstVertexCount++] = v2;
+				//add all edges of v2
+				l = this.getEdgesOf(v2);
+				it = l.listIterator(0);
+				while(it.hasNext()){
+					minHeap.addElement(it.next());
+				}
 			}
 		}
 		return mst;
@@ -126,8 +133,8 @@ public class Graph
 	private boolean foundIn(String[] mstNodes, String key){
 		for(int i = 0; i < mstNodes.length; i++){
 			if(key.equals(mstNodes[i]))
-				return false;
+				return true;
 		}
-		return true;
+		return false;
 	}
 }
